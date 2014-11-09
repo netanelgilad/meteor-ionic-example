@@ -6,9 +6,10 @@ if (Meteor.isClient) {
   Meteor.subscribe('Projects');
   Meteor.subscribe('Tasks');
 
-  angularMeteor.controller('TodoCtrl', ['$scope', '$collection', '$ionicModal', '$rootScope', '$ionicSideMenuDelegate', '$ionicPopup',
-    function ($scope, $collection, $ionicModal, $rootScope, $ionicSideMenuDelegate, $ionicPopup) {
+  angularMeteor.requires.push('ngCordova.plugins.datePicker');
 
+  angularMeteor.controller('TodoCtrl', ['$scope', '$collection', '$ionicModal', '$rootScope', '$ionicSideMenuDelegate', '$ionicPopup', '$cordovaDatePicker',
+    function ($scope, $collection, $ionicModal, $rootScope, $ionicSideMenuDelegate, $ionicPopup, $cordovaDatePicker) {
       // https://github.com/Urigo/angular-meteor#using-meteor-collections
       $collection(Projects, {}).bind($scope, 'Projects', true);
       $collection(Tasks, {}).bind($scope, 'Tasks', true);
@@ -68,13 +69,6 @@ if (Meteor.isClient) {
         animation: 'slide-in-up'
       });
 
-      $scope.openModal = function() {
-        $scope.taskModal.show();
-      };
-      $scope.closeModal = function() {
-        $scope.taskModal.hide();
-      };
-
       //Cleanup the modal when we are done with it!
       $scope.$on('$destroy', function() {
         $scope.taskModal.remove();
@@ -82,7 +76,7 @@ if (Meteor.isClient) {
 
       $scope.createTask = function (task) {
         var activeProject = $scope.activeProject();
-        if (!activeProject || !task) {
+        if (!activeProject || !task.title) {
           return;
         }
 
@@ -98,19 +92,28 @@ if (Meteor.isClient) {
 
       $scope.deleteTask = function (task) {
         $scope.Tasks.delete(task);
-      }
+      };
 
       $scope.newTask = function () {
+        $scope.task = {};
         $scope.taskModal.show();
       };
 
       $scope.closeNewTask = function () {
         $scope.taskModal.hide();
-      }
+      };
 
       $scope.toggleProjects = function () {
         $ionicSideMenuDelegate.toggleLeft();
       };
+
+      $scope.pickDate = function(task) {
+        var options = {date: new Date(), mode: 'date'};
+        //var options = {date: new Date(), mode: 'time'}; for time
+        $cordovaDatePicker.show(options).then(function(date){
+          task.date = date;
+        });
+      }
     }
   ]);
 }
