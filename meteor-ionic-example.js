@@ -2,13 +2,14 @@ Projects = new Meteor.Collection("Projects");
 Tasks = new Meteor.Collection("Tasks");
 
 if (Meteor.isClient) {
+  var app = angular.module('app.example', ['ngCordova.plugins.datePicker']);
+  angularMeteor.requires.push('app.example');
+
   // subscribe to the two collections we use
   Meteor.subscribe('Projects');
   Meteor.subscribe('Tasks');
 
-  angularMeteor.requires.push('ngCordova.plugins.datePicker');
-
-  angularMeteor.controller('TodoCtrl', ['$scope', '$collection', '$ionicModal', '$rootScope', '$ionicSideMenuDelegate', '$ionicPopup', '$cordovaDatePicker',
+  app.controller('TodoCtrl', ['$scope', '$collection', '$ionicModal', '$rootScope', '$ionicSideMenuDelegate', '$ionicPopup', '$cordovaDatePicker',
     function ($scope, $collection, $ionicModal, $rootScope, $ionicSideMenuDelegate, $ionicPopup, $cordovaDatePicker) {
       // https://github.com/Urigo/angular-meteor#using-meteor-collections
       $collection(Projects, {}).bind($scope, 'Projects', true);
