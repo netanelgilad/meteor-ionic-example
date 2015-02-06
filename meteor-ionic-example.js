@@ -2,18 +2,21 @@ Projects = new Meteor.Collection("Projects");
 Tasks = new Meteor.Collection("Tasks");
 
 if (Meteor.isClient) {
-  var app = angular.module('app.example', ['ngCordova.plugins.datePicker']);
-  angularMeteor.requires.push('app.example');
+  var app = angular.module('app.example', [
+    'angular-meteor',
+    'ui.router',
+    'ionic',
+    'ngCordova.plugins.datePicker']);
 
   // subscribe to the two collections we use
   Meteor.subscribe('Projects');
   Meteor.subscribe('Tasks');
 
-  app.controller('TodoCtrl', ['$scope', '$collection', '$ionicModal', '$rootScope', '$ionicSideMenuDelegate', '$ionicPopup', '$cordovaDatePicker',
-    function ($scope, $collection, $ionicModal, $rootScope, $ionicSideMenuDelegate, $ionicPopup, $cordovaDatePicker) {
-      // https://github.com/Urigo/angular-meteor#using-meteor-collections
-      $collection(Projects, {}).bind($scope, 'Projects', true);
-      $collection(Tasks, {}).bind($scope, 'Tasks', true);
+  app.controller('TodoCtrl', ['$scope', '$meteorCollection', '$ionicModal', '$rootScope', '$ionicSideMenuDelegate', '$ionicPopup', '$cordovaDatePicker',
+    function ($scope, $meteorCollection, $ionicModal, $rootScope, $ionicSideMenuDelegate, $ionicPopup, $cordovaDatePicker) {
+
+      $scope.Projects = $meteorCollection(Projects);
+      $scope.Tasks = $meteorCollection(Tasks);
 
       // A utility function for creating a new project
       // with the given projectTitle
@@ -27,7 +30,7 @@ if (Meteor.isClient) {
             $scope.selectProject(newProject, $scope.Projects.length - 1);
           }
         });
-      }
+      };
 
       // Called to create a new project
       $scope.newProject = function () {
@@ -50,7 +53,7 @@ if (Meteor.isClient) {
           }
         });
         return activeProject;
-      }
+      };
 
       // Called to select the given project
       $scope.selectProject = function (project, index) {
@@ -63,7 +66,7 @@ if (Meteor.isClient) {
       };
 
       // Create our modal
-      $ionicModal.fromTemplateUrl('new-task', function (modal) {
+      $ionicModal.fromTemplateUrl('new-task.tpl', function (modal) {
         $scope.taskModal = modal;
       }, {
         scope: $scope,
