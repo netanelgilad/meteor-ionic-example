@@ -8,6 +8,19 @@ if (Meteor.isClient) {
     'ionic',
     'ngCordova.plugins.datePicker']);
 
+  function onReady() {
+    angular.bootstrap(document, ['app.example']);
+  }
+
+  if (Meteor.isCordova) {
+    angular.element(document).on("deviceready", onReady);
+  }
+  else {
+    angular.element(document).ready(onReady);
+  }
+
+
+
   // subscribe to the two collections we use
   Meteor.subscribe('Projects');
   Meteor.subscribe('Tasks');

@@ -1,4 +1,4 @@
-angularui:angular-ui-router@0.2.13
+angularui:angular-ui-router@0.2.13_2
 application-configuration@1.0.4
 autoupdate@1.1.5
 base64@1.0.2
@@ -45,7 +45,7 @@ templating@1.0.11
 tracker@1.0.5
 ui@1.0.5
 underscore@1.0.2
-urigo:angular@0.6.5
+urigo:angular@0.6.7
 urigo:ionic@0.3.0
 url@1.0.3
 webapp@1.1.6
