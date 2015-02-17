@@ -20,6 +20,19 @@ if (Meteor.isClient) {
   }
 
 
+  app.config(['$urlRouterProvider', '$stateProvider',
+    function($urlRouterProvider, $stateProvider){
+
+    $urlRouterProvider.otherwise("/tabs");
+
+    $stateProvider
+      .state('tabs', {
+        url : '/tabs',
+        templateUrl: 'index.tpl',
+        controller: 'TodoCtrl'
+      });
+  }]);
+
 
   // subscribe to the two collections we use
   Meteor.subscribe('Projects');
