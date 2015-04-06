@@ -28,7 +28,7 @@ if (Meteor.isClient) {
     $stateProvider
       .state('tabs', {
         url : '/tabs',
-        templateUrl: 'index.tpl',
+        templateUrl: 'index.ng.html',
         controller: 'TodoCtrl'
       });
   }]);
@@ -92,7 +92,7 @@ if (Meteor.isClient) {
       };
 
       // Create our modal
-      $ionicModal.fromTemplateUrl('new-task.tpl', function (modal) {
+      $ionicModal.fromTemplateUrl('new-task.ng.html', function (modal) {
         $scope.taskModal = modal;
       }, {
         scope: $scope,
