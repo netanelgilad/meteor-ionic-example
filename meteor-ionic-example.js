@@ -1,5 +1,5 @@
-Projects = new Meteor.Collection("Projects");
-Tasks = new Meteor.Collection("Tasks");
+Projects = new Mongo.Collection("Projects");
+Tasks = new Mongo.Collection("Tasks");
 
 if (Meteor.isClient) {
   var app = angular.module('app.example', [
@@ -9,7 +9,7 @@ if (Meteor.isClient) {
     'ngCordova.plugins.datePicker']);
 
   function onReady() {
-    angular.bootstrap(document, ['app.example']);
+    angular.bootstrap(document, ['app.example'], {strictDi: true});
   }
 
   if (Meteor.isCordova) {
@@ -41,8 +41,8 @@ if (Meteor.isClient) {
   app.controller('TodoCtrl', ['$scope', '$meteorCollection', '$ionicModal', '$rootScope', '$ionicSideMenuDelegate', '$ionicPopup', '$cordovaDatePicker',
     function ($scope, $meteorCollection, $ionicModal, $rootScope, $ionicSideMenuDelegate, $ionicPopup, $cordovaDatePicker) {
 
-      $scope.Projects = $meteorCollection(Projects);
-      $scope.Tasks = $meteorCollection(Tasks);
+      $scope.Projects = $scope.$meteorCollection(Projects);
+      $scope.Tasks = $scope.$meteorCollection(Tasks);
 
       // A utility function for creating a new project
       // with the given projectTitle
