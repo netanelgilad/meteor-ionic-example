@@ -5,7 +5,7 @@ An example app using urigo:ionic package for simple app development with the ion
 
 Uses:
 * [Urigo/meteor-ionic](https://github.com/Urigo/meteor-ionic)
-* [Urigo/angular-meteor](https://github.com/Urigo/angular-meteor)
+* [angular](https://github.com/Urigo/angular-meteor)
 
 ## Getting Started
 
