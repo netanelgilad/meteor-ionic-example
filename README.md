@@ -4,7 +4,7 @@ meteor-ionic-example
 An example app using urigo:ionic package for simple app development with the ionic framwork on meteor. Also includes an example of how to use ngCordova within meteor and ionic.
 
 Uses:
-* [Urigo/meteor-ionic](https://github.com/Urigo/meteor-ionic)
+* [https://github.com/driftyco/ionic](https://github.com/driftyco/ionic)
 * [angular](https://github.com/Urigo/angular-meteor)
 
 ## Getting Started
