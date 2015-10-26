@@ -8,7 +8,7 @@ Uses:
 * [angular](https://github.com/Urigo/angular-meteor)
 
 Resources:
-* [ionic tutorial](http://angular-meteor.com/ionic-tutorial/)
+* [angular-meteor ionic tutorial](http://angular-meteor.com/ionic-tutorial/)
 * http://ionicframework.com/
 * https://github.com/driftyco/ionic
 
