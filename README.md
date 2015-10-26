@@ -7,6 +7,11 @@ Uses:
 * [driftyco:ionic](https://github.com/driftyco/ionic)
 * [angular](https://github.com/Urigo/angular-meteor)
 
+Resources:
+* [ionic tutorial](http://angular-meteor.com/ionic-tutorial/)
+* http://ionicframework.com/
+* https://github.com/driftyco/ionic
+
 ## Getting Started
 
 To get started clone this repo and run the application.
