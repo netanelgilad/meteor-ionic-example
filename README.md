@@ -8,9 +8,11 @@ Uses:
 * [angular](https://github.com/Urigo/angular-meteor)
 
 Resources:
-* [angular-meteor ionic tutorial](http://angular-meteor.com/ionic-tutorial/)
+* [angular-meteor ionic tutorial](http://angular-meteor.com/tutorials/angular1/mobile-support-and-packages-isolation)
+* [angular-meteor mobile support tutorial](http://angular-meteor.com/tutorials/angular1/mobile-support-and-packages-isolation)
 * http://ionicframework.com/
 * https://github.com/driftyco/ionic
+
 
 ## Getting Started
 
